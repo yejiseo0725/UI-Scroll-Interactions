@@ -6,10 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRID</title>
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/grid.css">
 </head>
 
 <body>
     <h1>Grid Layout</h1>
+
+    <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+        <div class="item">E</div>
+        <div class="item">F</div>
+        <div class="item">G</div>
+        <div class="item">H</div>
+        <div class="item">I</div>
+    </div>
+
+    <div class="accordion">
+        <div class="acc-item">
+            <button class="acc-title">제목1</button>
+            <div class="acc-content">내용1</div>
+        </div>
+        <div class="acc-item">
+            <button class="acc-title">제목2</button>
+            <div class="acc-content">내용2</div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script>
+        $('.accordion').each(function () {
+            const $accordion = $(this);
+
+            // init: 모든 content 닫기
+            $accordion.find('.acc-content').hide();
+            $accordion.find('.acc-item').removeClass('active');
+
+            $accordion.find('.acc-title').on('click', function () {
+                const $item = $(this).closest('.acc-item');
+                const $content = $item.find('.acc-content');
+
+                // toggle: 펼쳐진 거 닫고, 새로 열기
+                if ($item.hasClass('active')) {
+                    $item.removeClass('active');
+                    $content.slideUp();
+                } else {
+                    $accordion.find('.acc-item').removeClass('active').find('.acc-content').slideUp();
+                    $item.addClass('active');
+                    $content.slideDown();
+                }
+            });
+        });
+
+    </script>
 </body>
 
 </html>

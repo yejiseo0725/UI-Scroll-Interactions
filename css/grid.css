@@ -1,0 +1,9 @@
+body {
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  border: 2px solid teal;
+}
