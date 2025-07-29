@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Components</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <style>
+        .tab-nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tab-nav li {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .tab-nav li.active a {
+            font-weight: bold;
+        }
+
+        .tab-pane {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>쫄보의 JQuery Components 연습</h1>
+
+    <!-- Tab -->
+    <div class="tabs">
+        <ul class="tab-nav">
+            <li class="active"><a href="#tab1">탭 1</a></li>
+            <li><a href="#tab2">탭 2</a></li>
+            <li><a href="#tab3">탭 3</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane active">안녕하세요</div>
+            <div id="tab2" class="tab-pane">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt
+                excepturi, assumenda iste enim perferendis dolore distinctio modi eveniet culpa in nostrum, pariatur
+                obcaecati rerum iusto vero aspernatur. Obcaecati, reprehenderit impedit.</div>
+            <div id="tab3" class="tab-pane">탭 3의 내용 탭 3의 내용 탭 3의 내용 탭 3의 내용</div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $('.tab-nav a').click(function (e) {
+            e.preventDefault();
+            // 기본 동작 제어(페이지 이동 방지, 탭만 이동되게 함)
+            let target = $(this).attr('href');
+            // attr('href') 로 <a> 속성값(id 선택자) 가져오기, 클릭 콘텐츠 식별 위해 target 변수에 저장
+
+            $(this).parent().addClass('active').siblings().removeClass('active');
+            $('.tab-pane').removeClass('active');
+            $(target).addClass('active');
+        });
+    </script>
+</body>
+
+</html>
