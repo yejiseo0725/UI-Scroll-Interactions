@@ -32,13 +32,50 @@
         .tab-pane.active {
             display: block;
         }
+
+        .acc-title {
+            cursor: pointer;
+            padding: 10px;
+            background: #eee;
+        }
+
+        .acc-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            margin: 100px auto;
+            width: 300px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <h1>쫄보의 JQuery Components 연습</h1>
 
-    <!-- Tab -->
+    <!-- tab -->
     <div class="tabs">
         <ul class="tab-nav">
             <li class="active"><a href="#tab1">탭 1</a></li>
@@ -55,8 +92,31 @@
         </div>
     </div>
 
+    <!-- accordion -->
+    <div class="accordion">
+        <div class="acc-item">
+            <div class="acc-title">acc 1</div>
+            <div class="acc-content">content 1</div>
+        </div>
+        <div class="acc-item">
+            <div class="acc-title">acc 2</div>
+            <div class="acc-content">content 2</div>
+        </div>
+    </div>
+
+    <!-- modal -->
+    <button class="open-modal">모달</button>
+
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-modal">X</span>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, ea.</p>
+        </div>
+    </div>
+
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script>
+        // tab
         $('.tab-nav a').click(function (e) {
             e.preventDefault();
             // 기본 동작 제어(페이지 이동 방지, 탭만 이동되게 함)
@@ -67,6 +127,28 @@
             $('.tab-pane').removeClass('active');
             $(target).addClass('active');
         });
+
+        // accordion
+        $('.acc-title').click(function () {
+            let content = $(this).next('.acc-content');
+            content.siblings('.acc-content').slideUp();
+            // 현재 선택된 아코디언 패널 외의 다른 패널 닫기
+            content.slideToggle();
+            // 현재 선택된 아코디언 패널은 토글
+        });
+
+        // modal
+        $('.open-modal').click(function () {
+            $('.modal').fadeIn();
+        });
+        $('.close-modal, .modal').click(function (e) {
+            if ($(e.target).is('.close-modal') || $(e.target).is('.modal')) {
+                $('.modal').fadeOut();
+            }
+            // 클릭 대상(E.Target)이 닫기 버튼이거나 모달 배경인지 확인
+            // 모달 안의 다른 요소를 클릭하면 모달이 닫히는 것을 방지 위한 조건
+        })
+
     </script>
 </body>
 
