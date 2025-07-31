@@ -8,6 +8,109 @@
     <link rel="stylesheet" href="./css/reset.css">
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
     <style>
+        .header {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .nav ul.nav-ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ddd;
+            list-style: none;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        /* 햄버거 버튼 */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* 모바일 모달 */
+        .mobile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 20px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .mobile-modal ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-modal li {
+            margin-bottom: 10px;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .nav ul.nav-ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
         .tab-nav {
             display: flex;
             list-style: none;
@@ -87,105 +190,82 @@
         .drop-menu li:hover {
             background: #eee;
         }
-
-        nav {
-            display: flex;
-            width: 100%;
-            justify-content: flex-end;
-            box-sizing: border-box;
-            border: 2px solid tomato;
-        }
-
-        nav ul.nav-ul {
-            display: flex;
-            margin-right: 3rem;
-            box-sizing: border-box;
-            border: 2px solid orange;
-        }
-
-        nav ul.nav-ul li {
-            display: flex;
-            flex-direction: column;
-            width: 100px;
-            text-align: center;
-            margin-right: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        nav ul.nav-ul li button {
-            margin-bottom: 1rem;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            background: #fff;
-            border: 1px solid #ddd;
-            list-style: none;
-            padding: 10px;
-            margin-top: 5px;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-item:hover .dropdown {
-            display: block;
-        }
-
-        /* 햄버거 버튼 */
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* 모바일 모달 */
-        .mobile-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 8px;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 20px;
-            float: right;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .nav ul {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-        }
     </style>
 </head>
 
 <body>
     <h1>쫄보의 JQuery Components 연습</h1>
+
+    <!-- header -->
+    <header class="header">
+        <div class="header-inner">
+            <h1 class="logo">Logo</h1>
+            <nav class="nav">
+                <ul class="nav-ul">
+                    <li class="nav-item">
+                        <button class="nav-link">Features</button>
+                        <ul class="dropdown">
+                            <li>Cat 1</li>
+                            <li>Cat 2</li>
+                            <li>Cat 3</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link">Works</button>
+                        <ul class="dropdown">
+                            <li>Cat 1</li>
+                            <li>Cat 2</li>
+                            <li>Cat 3</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link">FAQs</button>
+                        <ul class="dropdown">
+                            <li>Cat 1</li>
+                            <li>Cat 2</li>
+                            <li>Cat 3</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <button class="hamburger">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- header-mobile -->
+    <div class="mobile-modal">
+        <div class="modal-content">
+            <button class="close-modal">✖</button>
+            <ul>
+                <li>
+                    <span>Features</span>
+                    <ul>
+                        <li>Cat 1</li>
+                        <li>Cat 2</li>
+                        <li>Cat 3</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>Works</span>
+                    <ul>
+                        <li>Cat 1</li>
+                        <li>Cat 2</li>
+                        <li>Cat 3</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>FAQs</span>
+                    <ul>
+                        <li>Cat 1</li>
+                        <li>Cat 2</li>
+                        <li>Cat 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <!-- tab -->
     <div class="tabs">
@@ -237,78 +317,6 @@
             <li>li 3</li>
         </ul>
     </div>
-
-    <!-- layout -->
-    <header class="header">
-        <div class="header-inner">
-            <h1 class="logo">Logo</h1>
-            <nav class="nav">
-                <ul class="nav-ul">
-                    <li class="nav-item">
-                        <button class="nav-link">Features</button>
-                        <ul class="dropdown">
-                            <li>Cat 1</li>
-                            <li>Cat 2</li>
-                            <li>Cat 3</li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link">Works</button>
-                        <ul class="dropdown">
-                            <li>Cat 1</li>
-                            <li>Cat 2</li>
-                            <li>Cat 3</li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link">FAQs</button>
-                        <ul class="dropdown">
-                            <li>Cat 1</li>
-                            <li>Cat 2</li>
-                            <li>Cat 3</li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <button class="hamburger">
-                ☰
-            </button>
-        </div>
-    </header>
-
-    <!-- 모바일 모달 -->
-    <div class="mobile-modal">
-        <div class="modal-content">
-            <button class="close-modal">✖</button>
-            <ul>
-                <li>
-                    <span>Features</span>
-                    <ul>
-                        <li>Cat 1</li>
-                        <li>Cat 2</li>
-                        <li>Cat 3</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>Works</span>
-                    <ul>
-                        <li>Cat 1</li>
-                        <li>Cat 2</li>
-                        <li>Cat 3</li>
-                    </ul>
-                </li>
-                <li>
-                    <span>FAQs</span>
-                    <ul>
-                        <li>Cat 1</li>
-                        <li>Cat 2</li>
-                        <li>Cat 3</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-
 
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script>
