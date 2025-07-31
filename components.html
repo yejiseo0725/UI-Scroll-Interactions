@@ -69,6 +69,118 @@
             right: 10px;
             cursor: pointer;
         }
+
+        .drop-menu {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+
+        .drop-menu li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .drop-menu li:hover {
+            background: #eee;
+        }
+
+        nav {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            box-sizing: border-box;
+            border: 2px solid tomato;
+        }
+
+        nav ul.nav-ul {
+            display: flex;
+            margin-right: 3rem;
+            box-sizing: border-box;
+            border: 2px solid orange;
+        }
+
+        nav ul.nav-ul li {
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            text-align: center;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav ul.nav-ul li button {
+            margin-bottom: 1rem;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ddd;
+            list-style: none;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        /* 햄버거 버튼 */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* 모바일 모달 */
+        .mobile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 20px;
+            float: right;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
     </style>
 </head>
 
@@ -105,14 +217,98 @@
     </div>
 
     <!-- modal -->
-    <button class="open-modal">모달</button>
+    <button class="open-modal">모달 버튼</button>
 
     <div class="modal">
         <div class="modal-content">
             <span class="close-modal">X</span>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, ea.</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod nesciunt eos, repellendus commodi
+                blanditiis dolores vel veritatis tenetur optio cum! Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Cupiditate, ea.</p>
         </div>
     </div>
+
+    <!-- dropdown -->
+    <div class="dropdown">
+        <button class="drop-btn">메뉴</button>
+        <ul class="drop-menu">
+            <li>li 1</li>
+            <li>li 2</li>
+            <li>li 3</li>
+        </ul>
+    </div>
+
+    <!-- layout -->
+    <header class="header">
+        <div class="header-inner">
+            <h1 class="logo">Logo</h1>
+            <nav class="nav">
+                <ul class="nav-ul">
+                    <li class="nav-item">
+                        <button class="nav-link">Features</button>
+                        <ul class="dropdown">
+                            <li>Cat 1</li>
+                            <li>Cat 2</li>
+                            <li>Cat 3</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link">Works</button>
+                        <ul class="dropdown">
+                            <li>Cat 1</li>
+                            <li>Cat 2</li>
+                            <li>Cat 3</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link">FAQs</button>
+                        <ul class="dropdown">
+                            <li>Cat 1</li>
+                            <li>Cat 2</li>
+                            <li>Cat 3</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <button class="hamburger">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 모달 -->
+    <div class="mobile-modal">
+        <div class="modal-content">
+            <button class="close-modal">✖</button>
+            <ul>
+                <li>
+                    <span>Features</span>
+                    <ul>
+                        <li>Cat 1</li>
+                        <li>Cat 2</li>
+                        <li>Cat 3</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>Works</span>
+                    <ul>
+                        <li>Cat 1</li>
+                        <li>Cat 2</li>
+                        <li>Cat 3</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>FAQs</span>
+                    <ul>
+                        <li>Cat 1</li>
+                        <li>Cat 2</li>
+                        <li>Cat 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script>
@@ -147,7 +343,32 @@
             }
             // 클릭 대상(E.Target)이 닫기 버튼이거나 모달 배경인지 확인
             // 모달 안의 다른 요소를 클릭하면 모달이 닫히는 것을 방지 위한 조건
-        })
+        });
+
+        // dropdown
+        $('.drop-btn').click(function () {
+            $(this).next('.drop-menu').slideToggle();
+        });
+        $(document).click(function (e) {
+            const target = $(e.target);
+
+            if (!target.hasClass('drop-btn') && !target.closest('.dropdown').hasClass('dropdown')) {
+                $('.drop-menu').slideUp();
+            }
+        });
+
+        $(function () {
+            // 모바일 모달 열기
+            $('.hamburger').click(function () {
+                $('.mobile-modal').fadeIn();
+            })
+        });
+        // 모바일 모달 닫기
+        $('.close-modal, .mobile-modal').click(function (e) {
+            if (e.target !== this) return;
+            // modal-content 클릭 시 닫히지 않는 기능
+            $('.mobile-modal').fadeOut();
+        });
 
     </script>
 </body>
