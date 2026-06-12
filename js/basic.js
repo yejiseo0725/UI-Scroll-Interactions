@@ -55,3 +55,28 @@ function calculator(a, b, action) {
 calculator(1, 2, add);
 calculator(3, 4, multiply);
 calculator(-1, -2, add);
+
+// 퀴즈!
+function iterate(max, action) {
+    for (let i = 0; i < max; i++) {
+        action(i);
+    }
+}
+
+// 일반 출력 함수
+function log(num) {
+    console.log(num);
+}
+
+// 더블 출력 함수
+function doubleAndLog(num) {
+    console.log(num * 2);
+}
+
+iterate(3, (num) => console.log(num));
+iterate(3, (num) => console.log(num * 2));
+
+setTimeout(() => {
+    console.log('3초뒤 실행될거에요!')
+}, 3000);
+
