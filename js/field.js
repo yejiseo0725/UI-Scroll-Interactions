@@ -43,3 +43,65 @@ student.firstName = '안나';
 console.log(student.firstName);
 console.log(student.fullName); // get 
 student.fullName = '김철수'; // set 
+
+// class Tiger {
+//     constructor(color) {
+//         this.color = color;
+//     }
+//     eat() {
+//         console.log('EAT!!!');
+//     }
+//     sleep() {
+//         console.log('SLEEP~~~');
+//     }
+// }
+
+// class Dog {
+//     constructor(color) {
+//         this.color = color;
+//     }
+//     eat() {
+//         console.log('EAT!!!');
+//     }
+//     sleep() {
+//         console.log('SLEEP~~~');
+//     }
+//     play() {
+//         console.log("PLAY@@@");
+//     }
+// }
+
+class Animal {
+    constructor(color) {
+        this.color = color;
+    }
+    eat() {
+        console.log('먹자');
+    }
+    sleep() {
+        console.log('SLEEP~~~');
+    }   
+}
+
+class Dog extends Animal {
+    constructor(color, ownerName) {
+        super(color); // 부모생성자 color 전달
+        this.ownerName = ownerName;
+    }
+
+    play() {
+        console.log('놀자-!');
+    }
+    // 오버라이딩 overriding
+    eat() {
+        super.eat(); // 부모생성자의 먹자가 먼저 나옴
+        console.log('강쥐가 먹어요'); // 추가적인 기능
+    }
+}
+
+// Animal 을 상속해서 가져옴.
+const dog = new Dog('빨강이', '예지');
+console.log(dog);
+dog.sleep();
+dog.eat();
+dog.play();
