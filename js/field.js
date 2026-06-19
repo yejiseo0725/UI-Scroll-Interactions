@@ -132,3 +132,27 @@ const counter = new Counter(0);
 counter.increment(); // 1 -> API 사용
 counter.increment(); // 2
 console.log(counter.value);
+
+class Workers {
+  constructor(name) {
+    this.name = name;
+  }
+
+  constructor(department) {
+    this.department = department;
+  }
+
+  constructor(monthlyWorkingHours) {
+    this.monthlyWorkingHours = monthlyWorkingHours;
+  }
+}
+
+// 인스턴스: 풀타임
+class Fulltime extends Workers {}
+// 인스턴스: 파트타임
+class Parttime extends Workers {
+  // 시간당 페이는 오버라이딩 이용하기
+}
+
+// 각 직원별 한달 월급 계산기
+---
