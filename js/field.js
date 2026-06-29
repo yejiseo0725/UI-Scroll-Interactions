@@ -133,26 +133,32 @@ counter.increment(); // 1 -> API 사용
 counter.increment(); // 2
 console.log(counter.value);
 
-class Workers {
-  constructor(name) {
+class Employee {
+  constructor(name, department, hoursPerMonth, payRate) {
     this.name = name;
-  }
-
-  constructor(department) {
     this.department = department;
+    this.hoursPerMonth = hoursPerMonth;
+    this.payRate = payRate;
   }
-
-  constructor(monthlyWorkingHours) {
-    this.monthlyWorkingHours = monthlyWorkingHours;
+  calculatePay() {
+    return this.hoursPerMonth * this.payRate;
   }
 }
 
-// 인스턴스: 풀타임
-class Fulltime extends Workers {}
-// 인스턴스: 파트타임
-class Parttime extends Workers {
-  // 시간당 페이는 오버라이딩 이용하기
+class FullTimeEmployee extends Employee {
+  static PAY_RATE = 10000;
+  constructor(name, department, hoursPerMonth) {
+    super(name, department, hoursPerMonth, fullTimeEmployee.PAY_RATE);
+  }
+}
+class PartTimeEmployee extends Employee {
+  static PAY_RATE = 8000;
+  constructor(name, department, hoursPerMonth) {
+    super(name, department, hoursPerMonth, partTimeEmployee.PAY_RATE);
+  }
 }
 
-// 각 직원별 한달 월급 계산기
----
+const ellie = new FullTimeEmployee('엘리', 's/w', 30);
+const bob = new PartTimeEmployee('밥', 's/w', 20);
+console.log(ellie.calculatePay());
+console.log(bob.calculatePay());
