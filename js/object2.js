@@ -101,6 +101,7 @@ const txt = "HELLO YEJI!";
 
 for (let i = 0; i < txt.length; i++) {
   console.log(txt.charAt(i));
+  //   console.log(txt[i]);
 }
 
 // (2) 사용자들 id 잘라내 각각의 id를 배열로 보관
