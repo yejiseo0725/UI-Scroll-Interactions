@@ -19,3 +19,47 @@ array = Array.from({
   length: 2,
 });
 console.log(array);
+
+const fruits = ["banana", "apple", "grape", "peach"];
+console.log(fruits[0]);
+console.log(fruits.length);
+
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+
+// 배열의 함수들
+// 배열 자체를 변경하는지, 새로운 배열을 반환하는지
+
+const fruits2 = ["banana", "apple", "lemon"];
+
+console.log(Array.isArray(fruits2));
+console.log(fruits2.indexOf("apple"));
+console.log(fruits2.includes("banana"));
+// 추가: 제일 앞
+let length = fruits2.push("watermelon");
+console.log(fruits2);
+console.log(length);
+// 추가: 제일 뒤
+length = fruits2.unshift("melon");
+console.log(fruits2);
+console.log(length);
+// 제거: 제일 뒤
+let lastItem = fruits2.pop();
+console.log(fruits2);
+console.log(lastItem);
+// 제거: 제일 앞
+lastItem = fruits2.shift();
+console.log(fruits2);
+console.log(lastItem);
+// 중간 추가 또는 삭제
+const deleted = fruits2.splice(1, 1);
+console.log(fruits2);
+console.log(deleted);
+fruits2.splice(1, 0, "apple", "melon");
+console.log(fruits2);
+
+// 잘라진 새로운 배열을 만드는 API
+let newArr = fruits2.slice(0, 2);
+console.log(newArr);
+console.log(fruits2);
