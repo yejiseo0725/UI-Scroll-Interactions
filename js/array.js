@@ -63,3 +63,31 @@ console.log(fruits2);
 let newArr = fruits2.slice(0, 2);
 console.log(newArr);
 console.log(fruits2);
+
+// 배열 퀴즈 1.
+function replace(array, from, to) {
+  const replaced = Array.from(array);
+  for (let i = 0; i < replaced.length; i++) {
+    if (replaced[i] === from) {
+      replaced[i] = to;
+    }
+  }
+  return replaced;
+}
+
+const array = ["banana", "melon", "grape", "melon"];
+const result = replace(array, "melon", "kiwi");
+console.log(result);
+
+// 2.
+function count(array, item) {
+  let counter = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === item) {
+      counter++;
+    }
+  }
+  return counter;
+}
+const result2 = count(array, "kiwi");
+console.log(result2);
