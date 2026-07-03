@@ -75,3 +75,48 @@ result = [1, 2, 3, 4, 5].reduce((sum, value) => {
   sum += value;
   return sum;
 }, 0);
+
+// hof 퀴즈 1.
+function replace(array, from, to) {
+  return array.map((item) => (item === from ? to : item));
+}
+const array = ["banana", "melon", "grape", "melon"];
+const result = replace(array, "melon", "kiwi");
+console.log(result);
+
+// 2.
+function count(array, item) {
+  return array.reduce((count, value) => {
+    if (value === item) {
+      count++;
+    }
+    return count;
+  }, 0);
+}
+console.log(count(array, "kiwi"));
+
+// 3.
+const arr1 = ["banana", "kiwi", "grape"];
+const arr2 = ["banana", "strawberry", "grape", "strawberry"];
+
+function match(input, search) {
+  return input.filter((item) => search.includes(item));
+}
+
+console.log(match(arr1, arr2));
+
+// 4. 5이상 숫자들의 평균 만들기
+const nums = [3, 16, 5, 25, 4, 34, 21];
+
+function averageNums(numbers) {
+  const filtered = numbers.filter((n) => n >= 5);
+  return filtered.sort((a, b) => a - b);
+}
+let overFiveResult = averageNums(nums);
+console.log(overFiveResult);
+
+let aveResult = overFiveResult.reduce((sum, value) => {
+  sum += value;
+  return sum;
+}, 0);
+console.log(aveResult / overFiveResult.length);
