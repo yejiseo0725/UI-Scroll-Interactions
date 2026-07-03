@@ -105,11 +105,11 @@ function match(input, search) {
 
 console.log(match(arr1, arr2));
 
-// 4. 5이상 숫자들의 평균 만들기
+// 4. 5초과 숫자들의 평균 만들기
 const nums = [3, 16, 5, 25, 4, 34, 21];
 
 function averageNums(numbers) {
-  const filtered = numbers.filter((n) => n >= 5);
+  const filtered = numbers.filter((n) => n > 5);
   return filtered.sort((a, b) => a - b);
 }
 let overFiveResult = averageNums(nums);
