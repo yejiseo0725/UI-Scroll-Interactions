@@ -91,3 +91,19 @@ function count(array, item) {
 }
 const result2 = count(array, "kiwi");
 console.log(result2);
+
+// 3.
+const arr1 = ["banana", "kiwi", "grape"];
+const arr2 = ["banana", "strawberry", "grape", "strawberry"];
+
+function match(input, search) {
+  const result = [];
+  for (let i = 0; i < input.length; i++) {
+    if (search.includes(input[i])) {
+      result.push(input[i]);
+    }
+  }
+  return result;
+}
+
+console.log(match(arr1, arr2));
