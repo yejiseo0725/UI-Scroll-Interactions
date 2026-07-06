@@ -26,3 +26,35 @@ const multiple = {
 for (const item of multiple) {
   console.log(item);
 }
+
+// Generator
+function* multipleGenerator() {
+  for (let i = 0; i < 10; i++) {
+    yield i ** 2;
+  }
+}
+const multiple2 = multipleGenerator();
+let next = multiple2.next();
+console.log(next.value, next.done);
+
+// Spread
+function add(a, b, c) {
+  return a + b + c;
+}
+const nums = [1, 2, 3];
+console.log(add(...nums));
+
+// Rest parameters
+function sum(first, second, ...nums) {
+  console.log(nums);
+}
+sum(1, 2, 0, 1, 2, 4);
+
+// Object
+const ellie = { name: "Ellie", age: 20 };
+const updated = {
+  ...ellie,
+  job: "s/w engineer",
+};
+console.log(ellie);
+console.log(updated);
