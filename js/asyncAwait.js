@@ -38,6 +38,8 @@ function runInDelay(callback, seconds) {
   }
   setTimeout(callback, seconds * 1000);
 }
-runInDelay(() => {
-  console.log("어떤 호랑이가 나올까");
-}, 2);
+try {
+  runInDelay(() => {
+    console.log("어떤 호랑이가 나올까");
+  }, 2);
+} catch (error) {}
