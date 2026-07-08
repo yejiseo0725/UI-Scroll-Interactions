@@ -30,6 +30,15 @@ getChicken()
   .then(fryEgg)
   .then(console.log);
 
+// async
+function makeFriedEgg() {
+  return getChicken()
+    .catch(() => "chicken Basic")
+    .then(fetchEgg)
+    .then(fryEgg);
+}
+makeFriedEgg().then(console.log);
+
 // 바나나와 사과
 function getBanana() {
   return new Promise((resolve) => {

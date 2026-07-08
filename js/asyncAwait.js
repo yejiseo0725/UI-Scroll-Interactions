@@ -43,3 +43,34 @@ try {
     console.log("어떤 호랑이가 나올까");
   }, 2);
 } catch (error) {}
+
+// 바나나와 사과
+function getBanana() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("bananana");
+    }, 1000);
+  });
+}
+
+function getApple() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("appleee");
+    }, 2000);
+  });
+}
+
+function getOrange() {
+  return Promise.reject(new Error("no orange"));
+}
+
+// async
+async function fetchFruits() {
+  const banana = await getBanana();
+  const apple = await getApple();
+  return [banana, apple];
+}
+
+fetchFruits() //
+  .then((fruit) => console.log(fruit));
